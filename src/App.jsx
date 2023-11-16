@@ -9,6 +9,7 @@ import { data } from "./data.js";
 import { HiOutlineArrowPath } from "react-icons/hi2";
 import logo from "./assets/logo.png"
 import "./App.css"
+import { Loader } from '@ui5/webcomponents-react';
 import { Icon } from '@ui5/webcomponents-react';
 
 
@@ -18,9 +19,14 @@ function App() {
   const [search, setSearch] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [loading, setLoading] = useState(false); 
 
   const showMoreItems = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+    setLoading(true); 
+    setTimeout(() => {
+      setCurrentPage((prevPage) => prevPage + 1);
+      setLoading(false);
+    }, 1000); 
   };
 
   const refresh = () => {
@@ -29,7 +35,7 @@ function App() {
 
   const handleItemsPerPageChange = (e) => {
     setItemsPerPage(parseInt(e.target.value, 10));
-    setCurrentPage(1); // Sayfa numarasını sıfırla
+    setCurrentPage(1);
   };
 
   // Filtreleme ve sayfalama işlemleri
@@ -53,6 +59,7 @@ function App() {
               onChange={(e) => setSearch(e.target.value)}
               placeholder='Arama'>
           </Input>
+          {loading && <Loader></Loader>}
         <Table striped bordered hover>
           <thead>
             <tr>
