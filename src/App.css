@@ -1,0 +1,18 @@
+body {
+    background-size: cover;
+    -webkit-background-size: cover;
+    background-attachment: scroll;
+    background-image: 
+    url(
+  "assets/background.jpg");
+  background-color: #fafafa;
+    color: #333333;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+    margin: 0;
+  }
+.sap-logo{
+    margin: 0.75rem 1rem;
+}
